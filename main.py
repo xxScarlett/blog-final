@@ -18,10 +18,11 @@ app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
-##CONNECT TO DB
+# CONNECT TO DB
 if os.getenv("DATA_BASE_URL") is None:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///blog.db"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATA_BASE_URL")
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATA_BASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
